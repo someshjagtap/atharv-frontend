@@ -1,0 +1,131 @@
+<page-header></page-header>
+
+<div class="row">
+  <div class="col-sm-8">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Purchase Requision</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="reactiveForm2" class="form-field-full">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Pur, Req. No</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="username"
+                       required>
+                <mat-error *ngIf="reactiveForm2.get('username')?.invalid">
+                  {{'validations.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Pur, Req. Type</mat-label>
+                <mat-select required formControlName="gender" required>
+                  <mat-option>-- None --</mat-option>
+                  <mat-option value="1">male</mat-option>
+                  <mat-option value="2">female</mat-option>
+                </mat-select>
+                <mat-error *ngIf="reactiveForm2.get('gender')?.invalid">
+                  {{'validations.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Unit</mat-label>
+                <input matInput placeholder="Simple placeholder" type="number"
+                       formControlName="mobile" required>
+                <mat-icon matSuffix>smartphone</mat-icon>
+                <mat-error *ngIf="reactiveForm2.get('mobile')?.invalid">
+                  {{'validations.required' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
+                       formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Department</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="city">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Purpose</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="address">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Remark</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="company">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>When Required</mat-label>
+                <input matInput placeholder="Simple placeholder" type="number"
+                       formControlName="tele">
+                <mat-icon matSuffix>phone</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Employee</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="website">
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
+                       formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <button mat-raised-button color="primary" class="m-t-8">Save</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-sm-4">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Budget Details</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        Actual Budget: 0.00
+        <mat-divider class="m-y-16" inset></mat-divider>
+        Extension Budget: 0.00
+        <mat-divider class="m-y-16" inset></mat-divider>
+        Actual Budget: 0.00
+        <mat-divider class="m-y-16" inset></mat-divider>
+        Consumed Budget: 0.00
+        <mat-divider class="m-y-16" inset></mat-divider>
+        Balance Budget: 0.00
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

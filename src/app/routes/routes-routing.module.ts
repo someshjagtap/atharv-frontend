@@ -24,6 +24,14 @@ const routes: Routes = [
       { path: '403', component: Error403Component },
       { path: '404', component: Error404Component },
       { path: '500', component: Error500Component },
+      {
+        path: 'store',
+        loadChildren: () => import('./store/store.module').then(m => m.StoreModule),
+      },
+      {
+        path: 'purchase',
+        loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule),
+      },
     ],
   },
   {
