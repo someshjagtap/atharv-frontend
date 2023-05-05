@@ -1,0 +1,75 @@
+{
+  "menu": [
+    {
+      "route": "dashboard",
+      "name": "dashboard",
+      "type": "link",
+      "icon": "dashboard",
+      "badge": {
+        "color": "red-500",
+        "value": "5"
+      }
+    },
+    {
+      "route": "purchase",
+      "name": "purchase",
+      "type": "sub",
+      "icon": "color_lens",
+      "badge": {
+        "color": "red-500",
+        "value": "2"
+      },
+      "children": [
+        {
+          "route": "purchaseOrderRequisition",
+          "name": "purchaseOrderRequisition",
+          "type": "link"
+        },
+        {
+          "route": "purchaseOrderRequisitionApprovalHOD",
+          "name": "purchaseOrderRequisitionApprovalHOD",
+          "type": "link"
+        },
+        {
+          "route": "purchaseOrderRequisitionApprovalGM",
+          "name": "purchaseOrderRequisitionApprovalGM",
+          "type": "link"
+        }
+      ],
+      "permissions": {
+        "only": [
+          "ADMIN",
+          "MANAGER"
+        ]
+      }
+    },
+    {
+      "route": "store",
+      "name": "store",
+      "type": "sub",
+      "icon": "color_lens",
+      "badge": {
+        "color": "red-500",
+        "value": "4"
+      },
+      "children": [
+        {
+          "route": "storePurchaseRequisitionComponent",
+          "name": "storePurchaseRequisitionComponent",
+          "type": "link"
+        },
+        {
+          "route": "storePurchaseRequisitionApprovalHODComponent",
+          "name": "storePurchaseRequisitionApprovalHODComponent",
+          "type": "link"
+        }
+      ],
+      "permissions": {
+        "only": [
+          "ADMIN",
+          "MANAGER"
+        ]
+      }
+    }
+  ]
+}
