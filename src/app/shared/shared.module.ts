@@ -21,6 +21,11 @@ import { ErrorCodeComponent } from './components/error-code/error-code.component
 import { DisableControlDirective } from './directives/disable-control.directive';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
+import { UppercaseDirective } from './directives/upperCase.directive';
+import { TitleCaseDirective } from './directives/titleCase.directive';
+import { SpecialCharacterValidatorDirective } from './directives/specialCharacter.directive';
+import { PositiveNumberOnlyDirective } from './directives/positiveNumber.directive';
+import { LowercaseDirective } from './directives/lowerCase.directive';
 
 const MODULES: any[] = [
   CommonModule,
@@ -40,7 +45,14 @@ const MODULES: any[] = [
 ];
 const COMPONENTS: any[] = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC: any[] = [];
-const DIRECTIVES: any[] = [DisableControlDirective];
+const DIRECTIVES: any[] = [
+  DisableControlDirective,
+  UppercaseDirective,
+  TitleCaseDirective,
+  SpecialCharacterValidatorDirective,
+  PositiveNumberOnlyDirective,
+  LowercaseDirective,
+];
 const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
 
 @NgModule({
