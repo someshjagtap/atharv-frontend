@@ -11,6 +11,8 @@
     "store": "स्टोअर",
     "store.storePurchaseRequisitionComponent": "स्टोअर खरेदीची मागणी",
     "store.storePurchaseRequisitionApprovalHODComponent": "स्टोअर खरेदी मागणी मंजूरी-HOD",
+    "branch": "शाखा",
+    "branch.list": "यादी",
     "material": "Material",
     "material.form-controls": "Form Controls",
     "material.form-controls.autocomplete": "Autocomplete",
@@ -86,6 +88,39 @@
     "permissions.route-guard": "Route Guard",
     "permissions.test": "Permission Test"
   },
+
+  "tableHeader": {
+    "title": "शीर्षक",
+    "id": "क्रमांक",
+    "name": "नाव",
+    "firstName": "प्रथम नाव",
+    "lastName": "आडनाव",
+    "userName": "वापरकर्तानाव",
+    "designation": "पदनाम",
+    "शाखा": "शाखेचे नाव",
+    "operation": "ऑपरेशन",
+    "fullName": "पूर्ण नाव",
+    "applicantName": "अर्जदाराचे नाव",
+    "lastModified": "अंतिम सुधारित",
+    "lastModifiedBy": "LastModifiedBy",
+    "branchName": "शाखेचे नाव",
+    "branchcode": "शाखा कोड",
+    "branchType": "शाखा प्रकार",
+    "phone": "फोन",
+    "email": "ईमेल",
+    "status": "स्थिती"
+  },
+
+  "tableHeaderOperation": {
+    "delete": "हटवा",
+    "add": "जोडा",
+    "update": "अद्ययावत करा",
+    "view": "पहा",
+    "close": "बंद करा",
+    "ok": "ठीक आहे",
+    "confirm_delete": "पुष्टी_हटवा"
+  },
+
   "validations": {
     "required": "This field is required",
     "minlength": "Should have atleast {{number}} characters",

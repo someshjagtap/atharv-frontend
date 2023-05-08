@@ -70,6 +70,29 @@
           "MANAGER"
         ]
       }
+    },
+    {
+      "route": "branch",
+      "name": "branch",
+      "type": "sub",
+      "icon": "color_lens",
+      "badge": {
+        "color": "red-500",
+        "value": "4"
+      },
+      "children": [
+        {
+          "route": "list",
+          "name": "list",
+          "type": "link"
+        }
+      ],
+      "permissions": {
+        "only": [
+          "ADMIN",
+          "MANAGER"
+        ]
+      }
     }
   ]
 }
