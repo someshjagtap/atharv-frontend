@@ -74,25 +74,18 @@
     {
       "route": "branch",
       "name": "branch",
-      "type": "sub",
+      "type": "link",
       "icon": "color_lens",
       "badge": {
         "color": "red-500",
         "value": "4"
-      },
-      "children": [
-        {
-          "route": "list",
-          "name": "list",
-          "type": "link"
-        }
-      ],
-      "permissions": {
-        "only": [
-          "ADMIN",
-          "MANAGER"
-        ]
       }
+    },
+    {
+      "route": "user",
+      "name": "user",
+      "type": "link",
+      "icon": "supervisor_account"
     }
   ]
 }

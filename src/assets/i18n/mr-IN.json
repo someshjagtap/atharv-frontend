@@ -12,7 +12,7 @@
     "store.storePurchaseRequisitionComponent": "स्टोअर खरेदीची मागणी",
     "store.storePurchaseRequisitionApprovalHODComponent": "स्टोअर खरेदी मागणी मंजूरी-HOD",
     "branch": "शाखा",
-    "branch.list": "यादी",
+    "user": "युजर",
     "material": "Material",
     "material.form-controls": "Form Controls",
     "material.form-controls.autocomplete": "Autocomplete",

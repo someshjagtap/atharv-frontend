@@ -12,7 +12,7 @@
     "store.storePurchaseRequisitionComponent": "Store Purchase Requisition",
     "store.storePurchaseRequisitionApprovalHODComponent": "Store Purchase Requisition Approval-HOD",
     "branch": "Branch",
-    "branch.list": "List",
+    "user": "User",
     "material": "Material",
     "material.form-controls": "Form Controls",
     "material.form-controls.autocomplete": "Autocomplete",
