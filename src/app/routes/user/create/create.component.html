@@ -1,1 +1,306 @@
-<p>create works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{
+      (securityUserDTO.id != null ? 'atharv.button.updateUser' : 'atharv.button.addUser')
+      | translate
+      }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="matero-col-left" fxFlex="100">
+      <form
+            name="userForm"
+            role="form"
+            novalidate
+            #userForm="ngForm"
+            fxFlex="100"
+            class="form-field-full">
+        <div>
+
+          <fieldset>
+            <legend>{{ "atharv.formlabel.basicDetails" | translate }}</legend>
+            <div class="row">
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.firstName" | translate }}</mat-label>
+                  <input
+                         matInput
+                         placeholder='{{ "atharv.formlabel.firstName" | translate }}'
+                         name="firstName"
+                         pattern="^[a-zA-Z\s]*$"
+                         minlength="1"
+                         maxlength="150"
+                         [(ngModel)]="securityUserDTO.firstName"
+                         required />
+                  <mat-error *ngIf="userForm.controls.firstName?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                  <mat-error *ngIf="userForm.controls.firstName?.errors?.pattern">
+                    Enter Only Alphabets.
+                  </mat-error>
+                  <mat-icon color="primary" matSuffix>person</mat-icon>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.lastName" | translate }}</mat-label>
+                  <input
+                         matInput
+                         placeholder='{{ "atharv.formlabel.lastName" | translate }}'
+                         name="lastName"
+                         pattern="^[a-zA-Z\s]*$"
+                         [(ngModel)]="securityUserDTO.lastName"
+                         required />
+                  <mat-icon color="primary" matSuffix>person</mat-icon>
+                  <mat-error *ngIf="userForm.controls.lastName?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                  <mat-error *ngIf="userForm.controls.lastName?.errors?.pattern">
+                    Enter Only Alphabets.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.mobileNo" | translate }}</mat-label>
+                  <input
+                         matInput
+                         placeholder='{{ "atharv.formlabel.mobileNo" | translate }}'
+                         type="tel"
+                         name="mobileNo"
+                         pattern="^[6,7,8,9][0-9]{0,9}$"
+                         minlength="10"
+                         maxlength="10"
+                         [(ngModel)]="securityUserDTO.mobileNo"
+                         required />
+                  <mat-icon color="primary" matSuffix>smartphone</mat-icon>
+                  <mat-error *ngIf="userForm.controls.mobileNo?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                  <mat-error *ngIf="userForm.controls.mobileNo?.errors?.pattern">
+                    Invalid Mobile number/Number should always start with 6,7,8 or 9.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.email" | translate }}</mat-label>
+                  <input
+                         matInput
+                         placeholder='{{ "atharv.formlabel.email" | translate }}'
+                         name="email"
+                         pattern="(?![_.-])((?![_.-][_.-])[a-z\d_.-]){0,63}[a-z\d]@(?!-)((?!--)[a-z\d-]){0,63}[a-z\d]\.(((?!-)((?!--)[a-z\d-]){0,63}[a-z\d]\.)|)(([a-z]{2,14}\.)|)[a-z]{2,14}"
+                         minlength="2"
+                         max="50"
+                         [(ngModel)]="securityUserDTO.email"
+                         lowercase
+                         required />
+                  <mat-icon color="primary" matSuffix>email</mat-icon>
+                  <mat-error *ngIf="userForm.controls.email?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                  <mat-error *ngIf="userForm.controls.email?.errors?.['pattern']">
+                    {{ 'validations.invalid_email' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <!-- <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.address" | translate }}</mat-label>
+                  <input
+                    matInput
+                    placeholder='{{ "atharv.formlabel.address" | translate }}'
+                    name="address"
+                    [(ngModel)]="securityUserDTO.address"
+                  />
+                  <mat-icon color="primary" matSuffix>person_pin_circle</mat-icon>
+                  <mat-error *ngIf="userForm.controls.address?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                </mat-form-field> -->
+              </div>
+              <div class="col">
+                <!-- <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.gender" | translate }}</mat-label>
+                  <mat-select name="gender" [(ngModel)]="securityUserDTO.gender" required>
+                    <mat-option>{{ "atharv.formlabel.gender" | translate }}</mat-option>
+                    <mat-option value="FEMALE">Female</mat-option>
+                    <mat-option value="MALE">Male</mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>{{ "atharv.formlabel.roleResponsibility" | translate }}</legend>
+            <div class="row">
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.branchName" | translate }}</mat-label>
+                  <mtx-select
+                              [items]="branchList"
+                              name="selectedBranchId"
+                              bindLabel="branchName"
+                              bindValue="id"
+                              [(ngModel)]="selectedBranchId" required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index"
+                                 let-search="searchTerm">
+                      <div>{{ item.branchName }}</div>
+                    </ng-template>
+                  </mtx-select>
+                  <mat-error *ngIf="userForm.controls.selectedBranchId?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.societyName" | translate }}</mat-label>
+                  <mtx-select
+                              [items]="organizationList"
+                              name="selectorgId"
+                              bindLabel="orgName"
+                              bindValue="id"
+                              [(ngModel)]="selectorgId"
+                              required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index"
+                                 let-search="searchTerm">
+                      <div>{{ item.orgName }}</div>
+                    </ng-template>
+                  </mtx-select>
+                  <mat-error *ngIf="userForm.controls.selectorgId?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.roles" | translate }}</mat-label>
+                  <mtx-select
+                              [items]="securityRoleList"
+                              name="selectedRoleId"
+                              bindLabel="roleName"
+                              bindValue="id"
+                              [(ngModel)]="selectedRoleId" required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index"
+                                 let-search="searchTerm">
+                      <div>{{ item.roleName }}</div>
+                    </ng-template>
+                  </mtx-select>
+                  <mat-error *ngIf="userForm.controls.selectedRoleId?.errors?.required">
+                    {{ 'validations.required' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.designation" | translate }}</mat-label>
+                  <input
+                         matInput
+                         placeholder='{{ "atharv.formlabel.designation" | translate }}'
+                         name="designation"
+                         pattern="^[a-zA-Z\s]*$"
+                         [(ngModel)]="securityUserDTO.designation" />
+                </mat-form-field>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>{{ "atharv.formlabel.credentials" | translate }}</legend>
+            <div class="row">
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.employeeId" | translate }}</mat-label>
+                  <input
+                         matInput
+                         type="text"
+                         placeholder='{{ "atharv.formlabel.employeeId" | translate }}'
+                         name="employeeId"
+                         [(ngModel)]="securityUserDTO.employeeId"
+                         required />
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.username" | translate }}</mat-label>
+                  <input
+                         matInput
+                         type="text"
+                         placeholder='{{ "atharv.formlabel.username" | translate }}'
+                         name="username"
+                         [(ngModel)]="securityUserDTO.username"
+                         lowercase
+                         required />
+                  <mat-icon color="primary" matSuffix>person</mat-icon>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.password" | translate }}</mat-label>
+                  <input
+                         matInput
+                         placeholder="Password"
+                         name="password"
+                         #password="ngModel"
+                         [(ngModel)]="securityUserDTO.passwordHash"
+                         [minlength]="4"
+                         required />
+                  <mat-error *ngIf="userForm.controls.password?.errors?.required">
+                    {{ "login.please_enterpass" | translate }}
+                  </mat-error>
+                  <mat-error *ngIf="userForm.controls.password?.errors?.minlength">{{
+                    'login.minlength' | translate
+                    }}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>{{ "atharv.formlabel.confirmPassword" | translate }}</mat-label>
+                  <input
+                         matInput
+                         type="password"
+                         placeholder='{{ "atharv.formlabel.confirmPassword" | translate }}'
+                         name="confirmpassword"
+                         #confirmpassword="ngModel"
+                         pattern="{{ password.value }}"
+                         [(ngModel)]="securityUserDTO.confirmPassword"
+                         required />
+                  <mat-icon color="primary" matSuffix>lock</mat-icon>
+                  <mat-error
+                             *ngIf="securityUserDTO.passwordHash != securityUserDTO.confirmPassword">
+                    {{ "login.confirmpassword" | translate }}
+                  </mat-error>
+                  <mat-error *ngIf="userForm.controls.password?.errors?.required">
+                    {{ "login.please_enterpass" | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </fieldset>
+
+        </div>
+
+        &nbsp;
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <button mat-raised-button color="warn"
+                  (click)="previousState()">{{"atharv.button.cancel"|translate}}</button>
+          <button mat-raised-button color="primary" class="m-l-8" [disabled]="userForm.invalid"
+                  (click)="save()">
+            {{ (securityUserDTO.id != null ? 'atharv.button.update': 'atharv.button.save') |translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
