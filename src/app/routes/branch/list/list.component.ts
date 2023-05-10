@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MtxGridColumn } from '@ng-matero/extensions/grid';
 import { TranslateService } from '@ngx-translate/core';
 import { HelperService } from '@shared/services/helper.service';
@@ -19,6 +20,7 @@ export class ListComponent {
 
   constructor(
     private lookupService: LookupService,
+    private router: Router,
     private translate: TranslateService,
     private helperService: HelperService,
     private location: Location
@@ -117,6 +119,10 @@ export class ListComponent {
       return this.pageContext.page * this.pageContext.itemsPerPage + index;
     }
     return index;
+  }
+
+  navigateToCreate(){
+    this.router.navigateByUrl('/branch/create');
   }
 
 }

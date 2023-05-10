@@ -1,0 +1,402 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title class="example-card">
+      <ng-template #other_content>
+        <mat-card-title class="example-card">
+          Branch
+        </mat-card-title>
+      </ng-template>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="matero-col-left" fxFlex="100">
+      <form name="editForm" role="form" #editForm="ngForm" fxFlex="100" class="form-field-full">
+        <div
+             fxLayout="row wrap"
+             fxFlex="100"
+             class="matero-row"
+             style="height: auto; margin-bottom: 10px">
+          <div class="matero-col" fxFlex="100">
+            <div>
+              <fieldset>
+                <legend>{{ "atharv.formlabel.basicInformationn" | translate }}</legend>
+
+                <div class="col" fxFlex="100" fxFlex.gt-sm="100">
+                  <div class="row">
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>{{ "atharv.formlabel.societyName" | translate }}</mat-label>
+                        <mtx-select
+                                    [items]="organizationList"
+                                    name="orgName"
+                                    bindLabel="orgName"
+                                    bindValue="id"
+                                    [(ngModel)]="selectedOrgId"
+                                    required>
+                          <ng-template
+                                       ng-label-tmp
+                                       ng-option-tmp
+                                       let-item="item"
+                                       let-index="index"
+                                       let-search="searchTermy">
+                            {{ item.orgName }}
+                          </ng-template>
+                        </mtx-select>
+                        <mat-error *ngIf="editForm.controls.organisationId?.errors?.required">
+                          {{ 'validations.required' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>{{ "atharv.formlabel.regionName" | translate }}</mat-label>
+                        <mtx-select
+                                    [items]="regionList"
+                                    name="regionName"
+                                    bindLabel="regionName"
+                                    bindValue="id"
+                                    [(ngModel)]="branchDTO.regionId"
+                                    required>
+                          <ng-template
+                                       ng-option-tmp
+                                       let-item="item"
+                                       let-index="index"
+                                       let-search="searchTermy">
+                            {{ item.regionName }}
+                          </ng-template>
+                        </mtx-select>
+                        <mat-error *ngIf="editForm.controls.regionId?.errors?.required">
+                          {{ 'validations.required' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>{{ "atharv.formlabel.branchName" | translate }} </mat-label>
+                        <input
+                               matInput
+                               placeholder='{{ "atharv.formlabel.branchName" | translate }}'
+                               name="branchName"
+                               bindValue="branchName"
+                               minlength="3"
+                               maxlength="50"
+                               pattern="^[a-zA-Z\s-_]*$"
+                               [(ngModel)]="branchDTO.branchName"
+                               required />
+                        <!-- <mat-icon color="primary" matSuffix>label_important </mat-icon> -->
+                        <mat-error *ngIf="editForm.controls.branchName?.errors?.required">
+                          {{ 'validations.required' | translate }}
+                        </mat-error>
+                        <mat-error *ngIf="editForm.controls.branchName?.errors?.pattern">
+                          e.g-Pune Branch
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row" fx-flex="33.33">
+                          <mat-form-field>
+                            <mat-label>{{ "atharv.formlabel.description" | translate }} </mat-label>
+                            <input
+                                   matInput
+                                   placeholder='{{ "atharv.formlabel.description" | translate }}'
+                                   name="description"
+                                   bindValue="description"
+                                   minlength="2"
+                                   maxlength="150"
+                                   [(ngModel)]="branchDTO.description"
+                                   required />
+                            <mat-error *ngIf="editForm.controls.description?.errors?.required">
+                              {{ 'validations.required' | translate }}
+                            </mat-error>
+                            <!-- <mat-icon color="primary" matSuffix>label_important </mat-icon> -->
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col" fx-flex="33.33">
+                        <mat-form-field>
+                          <mat-label>{{ "atharv.formlabel.branchCode" | translate }} </mat-label>
+                          <input
+                                 matInput
+                                 placeholder='{{ "atharv.formlabel.branchCode" | translate }}'
+                                 name="branchCode"
+                                 minlength="2"
+                                 pattern="^[0-9a-zA-Z]{0,9}[1-9a-zA-Z]{0,9}"
+                                 maxlength="10"
+                                 uppercase
+                                 [(ngModel)]="branchDTO.branchcode"
+                                 required />
+                          <!-- <mat-icon color="primary" matSuffix>label_important </mat-icon> -->
+                          <mat-error *ngIf="editForm.controls.branchCode?.errors?.required">
+                            {{ 'validations.required' | translate }}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col" fx-flex="33.33">
+                        <mat-form-field>
+                          <mat-label>{{ "atharv.formlabel.branchType" | translate }}</mat-label>
+                          <mat-select
+                                      name="branchType"
+                                      id="branchType"
+                                      required
+                                      [(ngModel)]="branchDTO.branchType">
+                            <mat-option>{{ "atharv.formlabel.branchType" | translate }}</mat-option>
+                            <mat-option value="ZONAL_OFFICE">ZONAL_OFFICE</mat-option>
+                            <mat-option value="BRANCH">BRANCH</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <mat-form-field fxFlex="50">
+                        <mat-label>{{ "atharv.formlabel.phone" | translate }} </mat-label>
+                        <input
+                               matInput
+                               placeholder='{{ "atharv.formlabel.phone" | translate }}'
+                               name="phone"
+                               pattern="^[6,7,8,9][0-9]{0,9}$"
+                               minlength="10"
+                               maxlength="10"
+                               [(ngModel)]="branchDTO.phone"
+                               required />
+                        <mat-error *ngIf="editForm.controls.phone?.errors?.required">
+                          {{ 'validations.required' | translate }}
+                        </mat-error>
+                        <mat-error *ngIf="editForm.controls.phone?.errors?.pattern">
+                          Invalid Mobile number/Number should always start with 6,7,8 or 9.
+                        </mat-error>
+                        <mat-icon color="primary" matSuffix>smartphone </mat-icon>
+                      </mat-form-field>
+
+                      <div class="col">
+                        <mat-form-field>
+                          <mat-label>{{ "atharv.formlabel.email" | translate }} </mat-label>
+                          <input
+                                 matInput
+                                 placeholder='{{ "atharv.formlabel.email" | translate }}'
+                                 name="email"
+                                 minlength="2"
+                                 maxlength="50"
+                                 [(ngModel)]="branchDTO.email"
+                                 lowercase
+                                 pattern="(?![_.-])((?![_.-][_.-])[a-z\d_.-]){0,63}[a-z\d]@(?!-)((?!--)[a-z\d-]){0,63}[a-z\d]\.(((?!-)((?!--)[a-z\d-]){0,63}[a-z\d]\.)|)(([a-z]{2,14}\.)|)[a-z]{2,14}"
+                                 required />
+                          <mat-error *ngIf="editForm.controls.email?.errors?.required">
+                            {{ 'validations.required' | translate }}
+                          </mat-error>
+                          <mat-icon color="primary" matSuffix>email</mat-icon>
+                          <mat-error *ngIf="editForm.controls.email?.errors?.['pattern']">
+                            {{ 'validations.invalid_email' | translate }}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                      <section fx-flex="50">
+                        <mat-checkbox
+                                      [(ngModel)]="branchDTO.isHeadOffice"
+                                      [labelPosition]="'after'"
+                                      name="isHeadOffice">
+                          Is Head Office:</mat-checkbox>
+                      </section>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col"></div>
+              </fieldset>
+              <!-- <br /> -->
+              <fieldset>
+                <legend>{{ "atharv.formlabel.adressDetails" | translate }}</legend>
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field>
+                      <mat-label>{{ "atharv.formlabel.address1" | translate }}</mat-label>
+                      <input
+                             matInput
+                             placeholder='{{ "atharv.formlabel.address1" | translate }}'
+                             name="selectAddress1"
+                             minlength="2"
+                             [(ngModel)]="branchDTO.address1"
+                             maxlength="150"
+                             required />
+                      <mat-error *ngIf="editForm.controls.selectAddress1?.errors?.required">
+                        {{ 'validations.required' | translate }}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field>
+                      <mat-label>{{ "atharv.formlabel.address2" | translate }}</mat-label>
+                      <input
+                             matInput
+                             placeholder='{{ "atharv.formlabel.address2" | translate }}'
+                             name="selectAddress2"
+                             minlength="2"
+                             maxlength="150"
+                             [(ngModel)]="branchDTO.address2" />
+                      <!-- <mat-error *ngIf="editForm.controls.selectRoadName?.errors?.required">
+                          {{ 'validations.required' | translate }}
+                        </mat-error> -->
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field>
+                      <mat-label>{{ "atharv.formlabel.landMark" | translate }}</mat-label>
+                      <input
+                             matInput
+                             placeholder='{{ "atharv.formlabel.landMark" | translate }}'
+                             name="selectLandMark"
+                             minlength="2"
+                             maxlength="150"
+                             [(ngModel)]="branchDTO.landmark" />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="m-r-8">
+                      <mat-label>{{ "atharv.formlabel.state" | translate }}</mat-label>
+                      <mtx-select
+                                  [items]="stateList"
+                                  name="selectedstateId"
+                                  bindLabel="stateName"
+                                  bindValue="id"
+                                  [(ngModel)]="selectedstateId"
+                                  required>
+                        <ng-template
+                                     ng-option-tmp
+                                     let-item="item"
+                                     let-index="index"
+                                     let-search="searchTermy">
+                          {{ item.stateName }}
+                        </ng-template>
+                      </mtx-select>
+                      <mat-error *ngIf="editForm.controls.selectedstateId?.errors?.required">
+                        {{ 'validations.required' | translate }}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field class="m-r-8">
+                      <mat-label>{{ "atharv.formlabel.district" | translate }}</mat-label>
+                      <mtx-select
+                                  [items]="districtList"
+                                  name="selectedDistrictId"
+                                  bindLabel="districtName"
+                                  bindValue="id"
+                                  [(ngModel)]="selectedDistrictId"
+                                  required>
+                        <ng-template
+                                     ng-option-tmp
+                                     let-item="item"
+                                     let-index="index"
+                                     let-search="searchTerm">
+                          <div>{{ item.districtName }}</div>
+                        </ng-template>
+                      </mtx-select>
+                      <mat-error *ngIf="editForm.controls.selectedDistrictId?.errors?.required">
+                        {{ 'validations.required' | translate }}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="m-r-8">
+                      <mat-label>{{ "atharv.formlabel.taluka" | translate }}</mat-label>
+                      <mtx-select
+                                  [items]="talukaList"
+                                  name="selectedtalukaId"
+                                  bindLabel="talukaName"
+                                  bindValue="id"
+                                  [(ngModel)]="selectedtalukaId"
+                                  required>
+                        <ng-template
+                                     ng-option-tmp
+                                     let-item="item"
+                                     let-index="index"
+                                     let-search="searchTerm">
+                          <div>{{ item.talukaName }}</div>
+                        </ng-template>
+                      </mtx-select>
+                      <mat-error *ngIf="editForm.controls.selectedtalukaId?.errors?.required">
+                        {{ 'validations.required' | translate }}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field class="m-r-8">
+                      <mat-label>{{ "atharv.formlabel.city" | translate }}</mat-label>
+                      <input
+                             matInput
+                             placeholder='{{ "atharv.formlabel.city" | translate }}'
+                             name="city"
+                             [(ngModel)]="branchDTO.city"
+                             minlength="3"
+                             maxlength="20"
+                             pattern="^[a-zA-Z/]*$" />
+
+                      <mat-error *ngIf="editForm.controls.city?.errors?.required">
+                        {{ 'validations.required' | translate }}
+                      </mat-error>
+                      <mat-error *ngIf="editForm.controls.city?.errors?.pattern">
+                        Numbers and Special Characters are not allowed
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col">
+                    <mat-form-field>
+                      <mat-label>{{ "atharv.formlabel.pincode" | translate }}</mat-label>
+                      <input
+                             matInput
+                             placeholder='{{ "atharv.formlabel.pincode" | translate }}'
+                             name="selectedPin"
+                             [(ngModel)]="branchDTO.selectedPin"
+                             pattern="^[1-9]{1}[0-9]{5}$"
+                             minlength="6"
+                             maxlength="6"
+                             required />
+                      <mat-error *ngIf="editForm.controls.selectedPin?.errors?.required">
+                        {{ 'validations.required' | translate }}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </fieldset>
+              <br />
+              <div fxLayout="row" fxLayoutAlign="end center">
+                <button
+                        mat-raised-button
+                        color="warn"
+                        type="button"
+                        class="m-t-8"
+                        (click)="previousState()">
+                  {{ "atharv.button.cancel" | translate }}</button>&nbsp;&nbsp;
+                <button
+                        mat-raised-button
+                        color="primary"
+                        class="m-t-8"
+                        type="submit"
+                        (click)="save()">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
