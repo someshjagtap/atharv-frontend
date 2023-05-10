@@ -36,6 +36,7 @@ const routes: Routes = [
         path: 'branch',
         loadChildren: () => import('./branch/branch.module').then(m => m.BranchModule),
       },
+      { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
     ],
   },
   {
