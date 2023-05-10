@@ -1,1 +1,67 @@
-<p>list works!</p>
+<!-- <breadcrumb></breadcrumb> -->
+<page-header></page-header>
+
+<div class="row">
+  <div class="col-sm-12">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Filter</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form>
+          <mat-form-field class="m-r-8" appearance="outline" style="font-size: 10px">
+            <mat-label>{{ "atharv.formlabel.firstName" | translate }}</mat-label>
+            <input matInput name="searchFirstName" [(ngModel)]="search['firstName.contains']" />
+          </mat-form-field>
+          &nbsp;
+          <mat-form-field class="m-r-8" appearance="outline" style="font-size: 10px">
+            <mat-label>{{ "atharv.formlabel.lastName" | translate }}</mat-label>
+            <input matInput name="searchlastName" [(ngModel)]="search['lastName.contains']" />
+          </mat-form-field>
+          &nbsp;
+          <mat-form-field class="m-r-8" appearance="outline" style="font-size: 10px">
+            <mat-label>{{ "atharv.formlabel.designation" | translate }}</mat-label>
+            <input matInput name="searchdesignation" [(ngModel)]="search['designation.contains']" />
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="onSearch(false)">{{
+            "atharv.button.search" | translate }}</button>
+          &nbsp;
+          <button
+                  mat-raised-button
+                  class="bg-grey-500 text-white"
+                  (click)="onSearch(true)">{{ "atharv.button.reset" | translate }}
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<mtx-grid
+          [data]="list"
+          [columns]="columns"
+          [showToolbar]="false"
+          [showColumnMenuButton]="false"
+          [loading]="isLoading"
+          [length]="pageContext.totalItems"
+          [pageOnFront]="false"
+          [pageIndex]="pageContext.page"
+          [pageSize]="pageContext.itemsPerPage"
+          [pageSizeOptions]="[5, 10, 20]"
+          (page)="onPageChange($event)"
+          [cellTemplate]="{ id: indexTpl }"
+          [showToolbar]="true"
+          [toolbarTemplate]="toolbarTpl">
+</mtx-grid>
+<ng-template #nameTpl let-row let-index="index" let-col="colDef"> </ng-template>
+<ng-template #expansionTpl let-row> </ng-template>
+<ng-template #indexTpl let-row let-index="index" let-col="colDef"> {{ getMyIndex(index + 1) }}
+</ng-template>
+<ng-template #expansionTpl let-row> </ng-template>
+<ng-template #toolbarTpl>
+  <button mat-raised-button color="primary" type="submit" (click)="create()">Add</button>
+  <button mat-raised-button color="accent" class="m-l-8" type="submit"
+          (click)="previousState()">Back</button>
+</ng-template>
