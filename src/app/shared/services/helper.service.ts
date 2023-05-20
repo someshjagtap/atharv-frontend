@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HelperService {
-  constructor() {}
+  constructor(private toastr: ToastrService) {}
 
   dateAgo(value: any): any {
     if (value) {
@@ -46,5 +47,39 @@ export class HelperService {
 
   daysBetweenToday(date: moment.Moment) {
     return date.diff(moment(), 'days');
+  }
+
+  showSuccess(message: any) {
+    this.toastr.success(message, 'Success!', {
+      newestOnTop: true,
+      closeButton: true,
+    });
+  }
+
+  showErrorMessage(message: any) {
+    this.toastr.error(message, 'Error', {
+      enableHtml: true,
+      closeButton: true,
+      timeOut: 5000,
+    });
+  }
+
+  showWarning(message: any) {
+    this.toastr.warning(message, 'Alert!', { closeButton: true });
+  }
+
+  showInfo(message: string) {
+    return this.toastr.info(message, 'Info', {
+      newestOnTop: true,
+      closeButton: true,
+    });
+  }
+
+  dismissToast(toastId: number) {
+    this.toastr.remove(toastId);
+  }
+
+  dismissAllToastr() {
+    this.toastr.clear();
   }
 }

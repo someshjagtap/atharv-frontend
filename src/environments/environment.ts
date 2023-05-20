@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   baseUrl: '',
   useHash: true,
+  serviceUrl: 'http://localhost:3000'
 };
 
 /*

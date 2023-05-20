@@ -82,6 +82,16 @@
       }
     },
     {
+      "route": "company",
+      "name": "company",
+      "type": "link",
+      "icon": "color_lens",
+      "badge": {
+        "color": "red-500",
+        "value": "4"
+      }
+    },
+    {
       "route": "user",
       "name": "user",
       "type": "link",
