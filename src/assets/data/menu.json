@@ -96,6 +96,34 @@
       "name": "user",
       "type": "link",
       "icon": "supervisor_account"
+    },
+    {
+      "route": "parameterLookup",
+      "name": "parameter",
+      "type": "sub",
+      "icon": "color_lens",
+      "badge": {
+        "color": "red-500",
+        "value": "4"
+      },
+      "children": [
+        {
+          "route": "currency-list",
+          "name": "currency",
+          "type": "link"
+        },
+        {
+          "route": "financial-year",
+          "name": "financial",
+          "type": "link"
+        }
+      ],
+      "permissions": {
+        "only": [
+          "ADMIN",
+          "MANAGER"
+        ]
+      }
     }
   ]
 }

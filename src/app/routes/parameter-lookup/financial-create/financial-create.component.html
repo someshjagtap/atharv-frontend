@@ -1,0 +1,123 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title class="example-card">
+      Fianancial Year
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="matero-col-left" fxFlex="100">
+      <form name="editForm" role="form" #editForm="ngForm" fxFlex="100" class="form-field-full">
+        <div
+             fxLayout="row wrap"
+             fxFlex="100"
+             class="matero-row"
+             style="height: auto; margin-bottom: 10px">
+          <div class="matero-col" fxFlex="100">
+            <div>
+              <fieldset>
+                <legend>Financial Year Info</legend>
+
+                <div class="col" fxFlex="100" fxFlex.gt-sm="100">
+                  <div class="row">
+                    <!-- <div class="col">
+                      <mat-form-field>
+                        <mat-label>{{ "atharv.formlabel.societyName" | translate }}</mat-label>
+                        <mtx-select
+                                    [items]="organizationList"
+                                    name="orgName"
+                                    bindLabel="orgName"
+                                    bindValue="id"
+                                    [(ngModel)]="selectedOrgId"
+                                    required>
+                          <ng-template
+                                       ng-label-tmp
+                                       ng-option-tmp
+                                       let-item="item"
+                                       let-index="index"
+                                       let-search="searchTermy">
+                            {{ item.orgName }}
+                          </ng-template>
+                        </mtx-select>
+                        <mat-error *ngIf="editForm.controls.organisationId?.errors?.required">
+                          {{ 'validations.required' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>{{ "atharv.formlabel.regionName" | translate }}</mat-label>
+                        <mtx-select
+                                    [items]="regionList"
+                                    name="regionName"
+                                    bindLabel="regionName"
+                                    bindValue="id"
+                                    [(ngModel)]="companyDTO.regionId"
+                                    required>
+                          <ng-template
+                                       ng-option-tmp
+                                       let-item="item"
+                                       let-index="index"
+                                       let-search="searchTermy">
+                            {{ item.regionName }}
+                          </ng-template>
+                        </mtx-select>
+                        <mat-error *ngIf="editForm.controls.regionId?.errors?.required">
+                          {{ 'validations.required' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div> -->
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Number</mat-label>
+                        <input
+                               matInput
+                               placeholder='Currency Code' />
+                        <!-- <mat-icon color="primary" matSuffix>label_important </mat-icon> -->
+
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row" fx-flex="33.33">
+                          <mat-form-field>
+                            <mat-label>Revenue Type </mat-label>
+                            <input
+                                   matInput
+                                   placeholder='Revenue Type'
+                                   name="name" />
+
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <br />
+              <div fxLayout="row" fxLayoutAlign="end center">
+                <button
+                        mat-raised-button
+                        color="warn"
+                        type="button"
+                        class="m-t-8"
+                        (click)="onNoClick()">
+                  {{ "atharv.button.cancel" | translate }}</button>&nbsp;&nbsp;
+                <button
+                        mat-raised-button
+                        color="primary"
+                        class="m-t-8"
+                        type="submit"
+                        (click)="save()">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

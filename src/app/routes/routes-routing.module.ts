@@ -45,6 +45,11 @@ const routes: Routes = [
         path: 'company',
         loadChildren: () => import('./company/company.module').then(m => m.CompanyModule),
       },
+      {
+        path: 'parameterLookup',
+        loadChildren: () =>
+          import('./parameter-lookup/parameter-lookup.module').then(m => m.ParameterLookupModule),
+      },
     ],
   },
   {
